@@ -1,4 +1,3 @@
-from bs4 import BeautifulSoup
 from discord_webhook import DiscordWebhook, DiscordEmbed
 import requests
 import threading
@@ -20,7 +19,7 @@ class DSMMonitor:
         second = requests.get(
             "https://eflash-us.doverstreetmarket.com/password", allow_redirects=False)
         if (first.status_code != second.status_code):
-            if second == 200:
+            if second.status_code == 200:
                 webhook = DiscordWebhook(
                     url='WEBHOOK URL HERE')
                 embed = DiscordEmbed(
